@@ -94,7 +94,7 @@ long	ft_vartype(t_input *input)
 		return (num_sizet);
 	}
 	else
-		num = (int)input->var;
+		num = (long)input->var;
 	return (num);
 }
 
