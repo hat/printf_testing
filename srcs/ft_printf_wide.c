@@ -17,7 +17,7 @@ char	*ft_wctos(wint_t c)
 	char	*str;
 
 	str = ft_strnew(4);
-	if (c <= 0x7F)
+	if (c <= 0xFF)
 		str[0] = c;
 	else if (c <= 0x7FF)
 	{
