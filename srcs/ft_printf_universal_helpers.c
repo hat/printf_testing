@@ -12,89 +12,58 @@
 
 #include "ft_printf.h"
 
-unsigned long 	ft_vartype_u(t_input *input)
+void			ft_gettypeflags(t_input *input)
 {
-	int				i;
-	unsigned int	num_ui;
-	unsigned long	num_ul;
-	int				is_l;
-	int				is_h;
-	int				is_z;
+	int i;
 
 	i = 0;
-	is_l = 0;
-	is_h = 0;
-	is_z = 0;
 	while (input->flags[i])
 	{
 		if (input->flags[i] == 'l' || input->flags[i] == 'j')
-			is_l++;
+		{
+			input->flagl = 1;
+			break ;
+		}
 		if (input->flags[i] == 'h')
-			is_h++;
+			input->flagh++;
 		if (input->flags[i] == 'z')
-			is_z++;
+		{
+			input->flagz = 1;
+			break ;
+		}
 		i++;
 	}
-	if (is_l || is_h || is_z || input->c == 'U')
-	{
-		num_ul = (unsigned long)input->var;
-		return (num_ul);
-	}
-	else
-		num_ui = (unsigned int)input->var;
-	return (num_ui);
+	if (input->flagl || input->flagh || input->flagz)
+		input->islong = 1;
 }
 
 long	ft_vartype(t_input *input)
 {
-	int				i;
-	int				num;
-	long			num_long;
-	short			num_short;
-	signed char		char_signed;
-	ssize_t			num_sizet;
-	int				is_l;
-	int				is_h;
-	int				is_z;
+	long	num;
 
-	i = 0;
-	is_l = 0;
-	is_h = 0;
-	is_z = 0;
-	while (input->flags[i])
-	{
-		if (input->flags[i] == 'l' || input->flags[i] == 'j' || input->flags[i] == 'z')
-			input->islong++;
-		if (input->flags[i] == 'l' || input->flags[i] == 'j')
-			is_l++;
-		if (input->flags[i] == 'h')
-			is_h++;
-		if (input->flags[i] == 'z')
-			is_z++;
-		i++;
-	}
-	if (is_l || input->c == 'D')
-	{
-		num_long = (long)input->var;
-		return (num_long);
-	}
-	if (is_h == 1)
-	{
-		num_short = (short)input->var;
-		return (num_short);
-	}
-	else if (is_h == 2)
-	{
-		char_signed = (signed char)input->var;
-		return (char_signed);
-	}
-	else if (is_z)
-	{
-		num_sizet = (size_t)input->var;
-		return (num_sizet);
-	}
-	else
+	ft_gettypeflags(input);
+	if (input->flagl || input->c == 'D')
 		num = (long)input->var;
+	else if (input->flagh == 1)
+		num = (short)input->var;
+	else if (input->flagh == 2)
+		num = (signed char)input->var;
+	else if (input->flagz)
+		num = (size_t)input->var;
+	else
+		num = (int)input->var;
+	return (num);
+}
+
+unsigned long 	ft_vartype_u(t_input *input)
+{
+	unsigned long	num;
+
+	ft_gettypeflags(input);
+	if (input->flagl || input->flagh || input->flagz || input->c == 'U')
+		num = (unsigned long)input->var;
+	else
+		num = (unsigned int)input->var;
 	return (num);
 }
 

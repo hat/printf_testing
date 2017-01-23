@@ -95,7 +95,7 @@ void				ft_puttab(char **tab);
 char				*ft_strtrimc(char const *s, char c);
 int					ft_ispalindrome(char *str);
 char				*ft_itoa_base(int value, int base);
-char				*ft_itoa_base_long(long long value, int base);
+char				*ft_itoa_base_long(long value, int base);
 char				*ft_itoa_base_unsign(unsigned long value, int base);
 
 #endif

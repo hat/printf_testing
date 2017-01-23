@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char 	*ft_itoa_base_long(long long value, int base)
+char 	*ft_itoa_base_long(long value, int base)
 {
 	int 	neg;
 	int		negoct;
@@ -36,6 +36,9 @@ char 	*ft_itoa_base_long(long long value, int base)
 		neg = 1;
 		size++;
 	}
+
+	if (base == 16 && value == 	-2147483648)
+		temp *= -1;
 	else if (base != 10 && value < 0)
 		temp -= -2147483648;
 	while ((temp /= base) > 0)

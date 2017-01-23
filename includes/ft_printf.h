@@ -36,6 +36,9 @@ typedef struct	s_read
 	int			flagminus;
 	int			flagzero;
 	int			islong;
+	int			flagl;
+	int			flagh;
+	int			flagz;
 }				t_input;
 
 /*

@@ -59,7 +59,7 @@ int		ft_convers_o(t_input *input)
 	i = 0;
 	flag = 1;
 	flag += ft_getflags(input);
-	num = ft_vartype(input);
+	num = ft_vartype_u(input);
 	numstr = ft_itoa_base_unsign(num, 8);
 	ft_checkflags(input, numstr);
 	input->form += flag;
