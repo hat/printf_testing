@@ -51,7 +51,7 @@ char	*ft_flagplus(t_input *input, char *str)
 	char	*new;
 
 	new = ft_strjoin("+", str);
-	input->flagplus = 0;
+	input->flagplus = -1;
 	ft_strdel(&str);
 	return (new);
 }
@@ -63,7 +63,7 @@ int		ft_widthoffset(t_input *input, char *str)
 	offset = ft_strlen(str);
 	if (input->c == 'c' && !*str)
 		offset += 1;
-	if ((input->flagplus || input->negative) && str[0] != '-')
+	if ((input->flagplus > 0 || input->negative) && str[0] != '-')
 		offset += 1;
 	if (input->flagpound && ft_tolower(input->c) == 'x'
 		&& (input->flagminus || input->flagzero))

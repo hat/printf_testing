@@ -49,8 +49,8 @@ void	ft_callflags(t_input *input, char *str)
 		str = ft_flagplus(input, str);
 	if (input->negative)
 		str = ft_addnegative(input, str);
-	if (input->flagspace && ft_strlen(input->flags) == 1
-		&& !input->flagminus && !input->negative && input->c != 'u')
+	if (input->flagspace && !input->flagminus && !input->negative && input->c != 'u' 
+		&& input->c != '%' && input->flagplus != -1)
 		str = ft_flagspace(str);
 	if (input->width && !input->flagminus)
 		str = ft_flagwidth(input, str, 0);
@@ -82,8 +82,7 @@ void	ft_checkflags(t_input *input, char *str)
 			input->flagpound++;
 		if (input->flags[i] == '-')
 			input->flagminus++;
-		if (input->flags[i] == ' ' && ft_strlen(input->flags) == 1
-			&& str[0] != '-')
+		if (input->flags[i] == ' ' && str[0] != '-')
 			input->flagspace++;
 		if (input->flags[i] == '0' && !numcheck)
 			input->flagzero++;
