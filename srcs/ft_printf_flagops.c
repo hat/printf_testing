@@ -71,6 +71,8 @@ int		ft_widthoffset(t_input *input, char *str)
 	if (input->flagpound && ft_tolower(input->c) == 'o'
 		&& (input->flagminus || input->flagzero))
 		offset += 1;
+	if (input->flagspace && input->flagzero)
+		offset += 1;
 	return (offset);
 }
 
