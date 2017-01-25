@@ -12,6 +12,25 @@
 
 #include "ft_printf.h"
 
+int		ft_precoffset(t_input *input)
+{
+	int		i;
+	int		offset;
+
+	i = 0;
+	offset = 0;
+	if (input->c == ft_tolower('o'))
+	{
+		while (input->flags[i])
+		{
+			if (input->flags[i] == '#')
+				offset += 1;
+			i++;
+		}
+	}
+	return (offset);
+}
+
 char	*ft_checkprecision(t_input *input, char *str)
 {
 	char	*new;
@@ -20,8 +39,8 @@ char	*ft_checkprecision(t_input *input, char *str)
 	if (input->precision > (int)ft_strlen(str) && ft_tolower(input->c) != 's'
 		&& ft_tolower(input->c) != 'c')
 	{
-		fill = ft_strnew(input->precision - ft_strlen(str));
-		ft_memset(fill, '0', input->precision - ft_strlen(str));
+		fill = ft_strnew(input->precision - ft_strlen(str) - ft_precoffset(input));
+		ft_memset(fill, '0', input->precision - ft_strlen(str) - ft_precoffset(input));
 		new = ft_strjoin(fill, str);
 		ft_strdel(&fill);
 	}
