@@ -34,11 +34,11 @@ int		ft_convers_c(t_input *input)
 
 	flag = 1;
 	c = ft_strnew(2);
+	flag += ft_getflags(input);
 	c[0] = (int)input->var;
 	c[1] = '\0';
 	if (c[0] == 0)
 		input->size++;
-	flag += ft_getflags(input);
 	ft_checkflags(input, c);
 	input->form += flag;
 	return (0);
@@ -51,12 +51,12 @@ int		ft_convers_s(t_input *input)
 	char	*temp;
 
 	flag = 1;
+	flag += ft_getflags(input);
 	temp = (char *)input->var;
 	if (!temp)
 		str = ft_strdup("(null)");
 	else
 		str = ft_strdup(temp);
-	flag += ft_getflags(input);
 	ft_checkflags(input, str);
 	input->form += flag;
 	ft_strdel(&str);

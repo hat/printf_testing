@@ -16,7 +16,7 @@
 
 int		ft_pickconvers(t_input *input)
 {
-	if (input->c != '%')
+	if (input->c != '%' && input->c != '\n')
 		input->var = va_arg(input->ap, void *);
 	if (input->c == 'i' || input->c == 'd' || input->c == 'D')
 		ft_convers_id(input);
@@ -40,6 +40,8 @@ int		ft_pickconvers(t_input *input)
 		ft_convers_u(input);
 	if (input->c == 'p')
 		ft_convers_p(input);
+	if (input->c == 'n')
+		ft_convers_n(input);
 	return (0);
 }
 

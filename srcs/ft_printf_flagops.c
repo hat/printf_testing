@@ -96,5 +96,7 @@ char	*ft_flagwidth(t_input *input, char *str, int left)
 	else
 		new = ft_strjoin(addon, str);
 	ft_strdel(&addon);
+	//gets rid of 4 leaks but causes failure
+	//ft_strdel(&str);
 	return (new);
 }

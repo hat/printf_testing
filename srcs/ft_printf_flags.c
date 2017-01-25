@@ -90,18 +90,49 @@ void	ft_checkflags(t_input *input, char *str)
 	ft_callflags(input, str);
 }
 
-void	ft_getflagprecision(t_input *input, int wild)
+int		ft_widthtopositive(t_input *input, int num)
+{
+	if (num < 0)
+	{
+		input->flagminus = 1;
+		num *= -1;
+	}
+	return (num);
+}
+
+int		ft_checkforwild(char *str, int iswidth)
 {
 	int		i;
+	int		wildflag;
+
+	i = 0;
+	wildflag = 0;
+	while (str[i] && !ft_isconversion(ft_tolower(str[i])) && !wildflag)
+	{
+		if (iswidth && str[i] == '.')
+			break ;
+		if (str[i] == '*')
+			wildflag = 1;
+		i++;
+	}
+	return (wildflag);
+}
+
+void	ft_getflagprecision(t_input *input)
+{
+	int		i;
+	int		precision;
 
 	i = 0;
 	while (input->flags[i] && input->flags[i] != '.')
 		i++;
 	if (input->flags[i] == '.')
 	{
-		if (wild == 2)
+		if (ft_checkforwild(&input->flags[i], 0))
 		{
-			input->precision = (int)input->var;
+			precision = (int)input->var;
+			if (precision > 0)
+				input->precision = precision;
 			input->var = va_arg(input->ap, void *);
 		}
 		else
@@ -119,21 +150,17 @@ int		ft_getflags(t_input *input)
 	wildflag = 0;
 	c = ft_strdup(input->form + 1);
 	while (input->form[i] && !ft_isconversion(ft_tolower(input->form[i])))
-	{
-		if (input->form[i] == '*')
-			wildflag++;
 		i++;
-	}
 	c[i - 1] = '\0';
 	input->flags = ft_strdup(c);
-	if (wildflag)
+	if (ft_checkforwild(input->flags, 1))
 	{
-		input->width = (int)input->var;
+		input->width = ft_widthtopositive(input, (int)input->var);
 		input->var = va_arg(input->ap, void *);
 	}
 	else
 		input->width = ft_atoi_flags(input->flags);
-	ft_getflagprecision(input, wildflag);
+	ft_getflagprecision(input);
 	ft_strdel(&c);
 	return (ft_strlen(input->flags));
 }

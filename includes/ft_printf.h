@@ -42,7 +42,7 @@ typedef struct	s_read
 }				t_input;
 
 /*
-** Declare digit functions
+** Declare digit conversion functions
 */
 int				ft_convers_id(t_input *input);
 int				ft_convers_u(t_input *input);
@@ -55,7 +55,7 @@ int				ft_convers_x(t_input *input);
 char			*ft_deletenegative(t_input *input, char *str);
 char			*ft_addnegative(t_input *input, char *str);
 /*
-** Declare char functions
+** Declare char conversion functions
 */
 int				ft_convers_percent(t_input *input);
 int				ft_convers_c(t_input *input);
@@ -63,6 +63,10 @@ int				ft_convers_s(t_input *input);
 int				ft_convers_p(t_input *input);
 int				ft_convers_wc(t_input *input);
 int				ft_convers_ws(t_input *input);
+/*
+** Declare bonus conversion functions
+*/
+int				ft_convers_n(t_input *input);
 /*
 ** Declare flag operation functions
 */
@@ -85,7 +89,7 @@ char			*ft_checkprecision(t_input *input, char *str);
 void			ft_add_width(t_input *input, size_t var_size, char *str);
 void			ft_checkflags(t_input *input, char *str);
 int				ft_getflags(t_input *input);
-void			ft_getflagprecision(t_input *input, int wild);
+void			ft_getflagprecision(t_input *input);
 int				ft_init(t_input *input);
 int				ft_printf(const char *format, ...);
 /*
