@@ -51,7 +51,8 @@ void	ft_callflags(t_input *input, char *str)
 	if (input->negative)
 		str = ft_addnegative(input, str);
 	if (input->flagspace && !input->flagminus && !input->negative
-		&& input->c != 'u' && input->c != '%' && input->flagplus != -1)
+		&& input->c != 'u' && input->c != '%' && input->flagplus != -1
+		&& ft_strcmp(str, "(null)") && ft_tolower(input->c) != 'c')
 		str = ft_flagspace(str);
 	if (input->width && !input->flagminus)
 		str = ft_flagwidth(input, str, 0);
