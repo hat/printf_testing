@@ -60,7 +60,8 @@ unsigned long	ft_vartype_u(t_input *input)
 	unsigned long	num;
 
 	ft_gettypeflags(input);
-	if (input->flagl || input->flagh || input->flagz || input->c == 'U')
+	if (input->flagl || input->flagh || input->flagz || input->c == 'U'
+		|| input->c == 'O')
 		num = (unsigned long)input->var;
 	else
 		num = (unsigned int)input->var;
