@@ -12,7 +12,10 @@
 
 #include "ft_printf.h"
 
-int		ft_precoffset(t_input *input)
+/*
+** Precision offset
+*/
+int		poset(t_input *input)
 {
 	int		i;
 	int		offset;
@@ -39,8 +42,8 @@ char	*ft_checkprecision(t_input *input, char *str)
 	if (input->precision > (int)ft_strlen(str) && ft_tolower(input->c) != 's'
 		&& ft_tolower(input->c) != 'c')
 	{
-		fill = ft_strnew(input->precision - ft_strlen(str) - ft_precoffset(input));
-		ft_memset(fill, '0', input->precision - ft_strlen(str) - ft_precoffset(input));
+		fill = ft_strnew(input->precision - ft_strlen(str) - poset(input));
+		ft_memset(fill, '0', input->precision - ft_strlen(str) - poset(input));
 		new = ft_strjoin(fill, str);
 		ft_strdel(&fill);
 	}

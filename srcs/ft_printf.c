@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//Consider making va_list global variable rather than in the struct
-
 #include "ft_printf.h"
 
-int		ft_pickconvers(t_input *input)
+void	ft_pickconverscontd(t_input *input)
+{
+	if (input->c == 'n')
+		ft_convers_n(input);
+}
+
+void	ft_pickconvers(t_input *input)
 {
 	if (input->c != '%' && input->c != '\n')
 		input->var = va_arg(input->ap, void *);
@@ -40,9 +44,7 @@ int		ft_pickconvers(t_input *input)
 		ft_convers_u(input);
 	if (input->c == 'p')
 		ft_convers_p(input);
-	if (input->c == 'n')
-		ft_convers_n(input);
-	return (0);
+	ft_pickconverscontd(input);
 }
 
 int		ft_findconvers(t_input *input)
@@ -66,19 +68,6 @@ int		ft_findconvers(t_input *input)
 	input->form = input->form + 1;
 	ft_init(input);
 	return (0);
-}
-
-void	ft_resetflags(t_input *input)
-{
-	input->width = 0;
-	input->negative = 0;
-	input->precision = -1;
-	input->flagplus = 0;
-	input->flagpound = 0;
-	input->flagspace = 0;
-	input->flagminus = 0;
-	input->flagzero = 0;
-	input->islong = 0;
 }
 
 int		ft_percentsign(t_input *input)

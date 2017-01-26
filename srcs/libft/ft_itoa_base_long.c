@@ -15,14 +15,14 @@
 #include "libft.h"
 #include <stdio.h>
 
-char 	*ft_itoa_base_long(long value, int base)
+char	*ft_itoa_base_long(long value, int base)
 {
-	int 	neg;
+	int		neg;
 	int		negoct;
 	ssize_t	size;
 	size_t	temp;
-	char 	*numstr = NULL;
-	char 	basenum[17] = "0123456789abcdef";
+	char	*numstr = NULL;
+	char	basenum[17] = "0123456789abcdef";
 
 	neg = 0;
 	negoct = 0;

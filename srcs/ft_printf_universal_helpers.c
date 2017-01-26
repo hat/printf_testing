@@ -37,7 +37,7 @@ void			ft_gettypeflags(t_input *input)
 		input->islong = 1;
 }
 
-long	ft_vartype(t_input *input)
+long			ft_vartype(t_input *input)
 {
 	long	num;
 
@@ -55,7 +55,7 @@ long	ft_vartype(t_input *input)
 	return (num);
 }
 
-unsigned long 	ft_vartype_u(t_input *input)
+unsigned long	ft_vartype_u(t_input *input)
 {
 	unsigned long	num;
 
@@ -67,7 +67,7 @@ unsigned long 	ft_vartype_u(t_input *input)
 	return (num);
 }
 
-char	ft_getconversion(char *str)
+char			ft_getconversion(char *str)
 {
 	int		i;
 
@@ -81,7 +81,7 @@ char	ft_getconversion(char *str)
 	return (' ');
 }
 
-int		ft_isflag(char c)
+int				ft_isflag(char c)
 {
 	if (c == '#' || c == '-' || c == '0')
 	{
@@ -90,7 +90,7 @@ int		ft_isflag(char c)
 	return (0);
 }
 
-int		ft_isconversion(char c)
+int				ft_isconversion(char c)
 {
 	if (c == 'd' || c == 'i' || c == 's' || c == 'c'
 			|| c == '%' || c == 'f' || c == 'o' || c == 'x'

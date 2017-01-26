@@ -49,8 +49,8 @@ void	ft_callflags(t_input *input, char *str)
 		str = ft_flagplus(input, str);
 	if (input->negative)
 		str = ft_addnegative(input, str);
-	if (input->flagspace && !input->flagminus && !input->negative && input->c != 'u' 
-		&& input->c != '%' && input->flagplus != -1)
+	if (input->flagspace && !input->flagminus && !input->negative
+		&& input->c != 'u' && input->c != '%' && input->flagplus != -1)
 		str = ft_flagspace(str);
 	if (input->width && !input->flagminus)
 		str = ft_flagwidth(input, str, 0);
@@ -60,7 +60,7 @@ void	ft_callflags(t_input *input, char *str)
 		input->str = ft_strjoin(input->str, str);
 }
 
-void	ft_checkflags(t_input *input, char *str)
+void	ft_checkflags(t_input *t, char *str)
 {
 	int		i;
 	int		numcheck;
@@ -68,26 +68,25 @@ void	ft_checkflags(t_input *input, char *str)
 	i = -1;
 	numcheck = 0;
 	if (str[0] == '-')
-		str = ft_deletenegative(input, str);
-	if (input->c != '%')
-		str = ft_checkprecision(input, str);
-	while (input->flags[++i])
+		str = ft_deletenegative(t, str);
+	if (t->c != '%')
+		str = ft_checkprecision(t, str);
+	while (t->flags[++i])
 	{
-		if ((input->flags[i] >= '1' && input->flags[i] <= '9')
-			|| input->flags[i] == '.')
+		if ((t->flags[i] >= '1' && t->flags[i] <= '9') || t->flags[i] == '.')
 			numcheck++;
-		if (input->flags[i] == '+' && ft_tolower(input->c) != 'c')
-			input->flagplus++;
-		if (input->flags[i] == '#' && ft_strcmp(str, "0"))
-			input->flagpound++;
-		if (input->flags[i] == '-')
-			input->flagminus++;
-		if (input->flags[i] == ' ' && str[0] != '-')
-			input->flagspace++;
-		if (input->flags[i] == '0' && !numcheck)
-			input->flagzero++;
+		if (t->flags[i] == '+' && ft_tolower(t->c) != 'c')
+			t->flagplus++;
+		if (t->flags[i] == '#' && ft_strcmp(str, "0"))
+			t->flagpound++;
+		if (t->flags[i] == '-')
+			t->flagminus++;
+		if (t->flags[i] == ' ' && str[0] != '-')
+			t->flagspace++;
+		if (t->flags[i] == '0' && !numcheck)
+			t->flagzero++;
 	}
-	ft_callflags(input, str);
+	ft_callflags(t, str);
 }
 
 int		ft_widthtopositive(t_input *input, int num)

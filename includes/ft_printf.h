@@ -97,6 +97,7 @@ int				ft_printf(const char *format, ...);
 */
 int				ft_init(t_input *input);
 t_input			*ft_init_tinput(const char *format);
+void			ft_resetflags(t_input *input);
 /*
 ** Declare main program function
 */

@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-char 	*ft_itoa_base(int value, int base)
+char	*ft_itoa_base(int value, int base)
 {
-	long 	n;
+	long	n;
 	long	temp;
 	long	len;
-	char 	*numstr;
-	char 	*basenum;
+	char	*numstr;
+	char	*basenum;
 
 	len = 0;
 	basenum = "0123456789abcdef";

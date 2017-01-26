@@ -12,6 +12,19 @@
 
 #include "ft_printf.h"
 
+void	ft_resetflags(t_input *input)
+{
+	input->width = 0;
+	input->negative = 0;
+	input->precision = -1;
+	input->flagplus = 0;
+	input->flagpound = 0;
+	input->flagspace = 0;
+	input->flagminus = 0;
+	input->flagzero = 0;
+	input->islong = 0;
+}
+
 int		ft_init(t_input *input)
 {
 	if (!(ft_strchr(input->form, '%')))

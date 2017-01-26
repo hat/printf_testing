@@ -55,7 +55,6 @@ int		ft_convers_wc(t_input *input)
 	flag += ft_getflags(input);
 	ft_checkflags(input, str);
 	input->form += flag;
-	//ft_strdel(&str);
 	return (0);
 }
 
