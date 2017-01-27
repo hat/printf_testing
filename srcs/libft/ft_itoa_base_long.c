@@ -10,45 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//Set up for negatives in printf
-
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_itoa_base_long(long value, int base)
+int		g_neg;
+
+static char	*ft_convert(long value, ssize_t size, size_t temp, int base)
 {
-	int		neg;
-	int		negoct;
-	ssize_t	size;
-	size_t	temp;
-	char	*numstr = NULL;
-	char	basenum[17] = "0123456789abcdef";
+	char	*numstr;
+	char	*basenum;
 
-	neg = 0;
-	negoct = 0;
-	size = 1;
-	temp = value;
-	if (base == 8 && value < 0)
-		negoct = 1;
-	if (base == 10 && value < 0)
-	{
-		temp *= -1;
-		neg = 1;
-		size++;
-	}
-
-	if (base == 16 && value == 	-2147483648)
-		temp *= -1;
-	else if (base != 10 && value < 0)
-		temp -= -2147483648;
-	while ((temp /= base) > 0)
-		size++;
+	basenum = ft_strdup("0123456789abcdef");
 	if (!(numstr = ft_strnew(size)))
 		return (0);
 	numstr[size--] = '\0';
 	while (*numstr)
 		numstr++;
-	if (neg)
+	if (g_neg == 1)
 		temp = value * -1;
 	else
 		temp = value;
@@ -58,9 +35,36 @@ char	*ft_itoa_base_long(long value, int base)
 		size--;
 		temp /= base;
 	}
-	if (neg)
+	if (g_neg == 1)
 		numstr[0] = '-';
-	if (negoct)
+	if (g_neg == 2)
 		numstr[0] = '3';
+	return (numstr);
+}
+
+char	*ft_itoa_base_long(long value, int base)
+{
+	ssize_t	size;
+	size_t	temp;
+	char	*numstr;
+
+	g_neg = 0;
+	size = 1;
+	temp = value;
+	if (base == 8 && value < 0)
+		g_neg = 2;
+	if (base == 10 && value < 0)
+	{
+		temp *= -1;
+		g_neg = 1;
+		size++;
+	}
+	if (base == 16 && value == -2147483648)
+		temp *= -1;
+	else if (base != 10 && value < 0)
+		temp -= -2147483648;
+	while ((temp /= base) > 0)
+		size++;
+	numstr = ft_convert(value, size, temp, base);
 	return (numstr);
 }

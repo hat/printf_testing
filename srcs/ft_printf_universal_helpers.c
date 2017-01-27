@@ -12,31 +12,6 @@
 
 #include "ft_printf.h"
 
-void			ft_gettypeflags(t_input *input)
-{
-	int i;
-
-	i = 0;
-	while (input->flags[i])
-	{
-		if (input->flags[i] == 'l' || input->flags[i] == 'j')
-		{
-			input->flagl = 1;
-			break ;
-		}
-		if (input->flags[i] == 'h')
-			input->flagh++;
-		if (input->flags[i] == 'z')
-		{
-			input->flagz = 1;
-			break ;
-		}
-		i++;
-	}
-	if (input->flagl || input->flagh || input->flagz)
-		input->islong = 1;
-}
-
 long			ft_vartype(t_input *input)
 {
 	long	num;
@@ -60,9 +35,14 @@ unsigned long	ft_vartype_u(t_input *input)
 	unsigned long	num;
 
 	ft_gettypeflags(input);
-	if (input->flagl || input->flagh || input->flagz || input->c == 'U'
-		|| input->c == 'O')
+	if (input->flagl || input->c == 'U' || input->c == 'O')
 		num = (unsigned long)input->var;
+	else if (input->flagh == 1)
+		num = (unsigned short)input->var;
+	else if (input->flagh == 2)
+		num = (unsigned char)input->var;
+	else if (input->flagz)
+		num = (size_t)input->var;
 	else
 		num = (unsigned int)input->var;
 	return (num);
@@ -97,7 +77,7 @@ int				ft_isconversion(char c)
 			|| c == '%' || c == 'f' || c == 'o' || c == 'x'
 			|| c == 'u' || c == 'O' || c == 'X' || c == 'p'
 			|| c == 'U' || c == 'D' || c == 'C' || c == 'S'
-			|| c == 'n')
+			|| c == 'n' || c == 'b')
 	{
 		return (1);
 	}

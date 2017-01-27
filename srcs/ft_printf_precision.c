@@ -12,9 +12,6 @@
 
 #include "ft_printf.h"
 
-/*
-** Precision offset
-*/
 int		poset(t_input *input)
 {
 	int		i;

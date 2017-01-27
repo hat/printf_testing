@@ -12,16 +12,39 @@
 
 #include "libft.h"
 
+static char	*ft_convert(long num, long temp, long len, int base)
+{
+	char	*numstr;
+	char	*basenum;
+
+	basenum = "0123456789abcdef";
+	numstr = (char *)malloc(sizeof(char) * len + 1);
+	if (!numstr)
+		return (0);
+	numstr[len] = '\0';
+	while (num)
+	{
+		numstr[--len] = basenum[num % base];
+		num /= base;
+	}
+	if (temp < 0)
+	{
+		if (base == 10)
+			numstr[0] = '-';
+		if (base == 8)
+			numstr[0] = '3';
+	}
+	return (numstr);
+}
+
 char	*ft_itoa_base(int value, int base)
 {
 	long	n;
 	long	temp;
 	long	len;
 	char	*numstr;
-	char	*basenum;
 
 	len = 0;
-	basenum = "0123456789abcdef";
 	temp = value;
 	n = value;
 	if (value < 0)
@@ -37,21 +60,6 @@ char	*ft_itoa_base(int value, int base)
 		value /= base;
 		len++;
 	}
-	numstr = (char *)malloc(sizeof(char) * len + 1);
-	if (!numstr)
-		return (0);
-	numstr[len] = '\0';
-	while (n)
-	{
-		numstr[--len] = basenum[n % base];
-		n /= base;
-	}
-	if (temp < 0)
-	{
-		if (base == 10)
-			numstr[0] = '-';
-		if (base == 8)
-			numstr[0] = '3';
-	}
+	numstr = ft_convert(n, temp, len, base);
 	return (numstr);
 }

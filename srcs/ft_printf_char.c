@@ -43,10 +43,9 @@ int		ft_convers_c(t_input *input)
 			return (0);
 		}
 	}
-	c = ft_strnew(2);
+	c = ft_strnew(1);
 	flag += ft_getflags(input);
 	c[0] = (int)input->var;
-	c[1] = '\0';
 	if (c[0] == 0)
 		input->size++;
 	ft_checkflags(input, c);

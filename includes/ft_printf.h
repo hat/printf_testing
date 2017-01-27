@@ -67,6 +67,7 @@ int				ft_convers_ws(t_input *input);
 ** Declare bonus conversion functions
 */
 int				ft_convers_n(t_input *input);
+int				ft_convers_b(t_input *input);
 /*
 ** Declare flag operation functions
 */
@@ -80,6 +81,7 @@ char			*ft_flagwidth(t_input *input, char *str, int left);
 int				ft_isconversion(char c);
 int				ft_isflag(char c);
 char			ft_getconversion(char *str);
+void			ft_gettypeflags(t_input *input);
 long			ft_vartype(t_input *input);
 unsigned long	ft_vartype_u(t_input *input);
 /*

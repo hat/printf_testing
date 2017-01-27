@@ -25,3 +25,18 @@ int		ft_convers_n(t_input *input)
 	input->form = input->form + flags;
 	return (0);
 }
+
+int		ft_convers_b(t_input *input)
+{
+	int		flag;
+	long	num;
+	char	*numstr;
+
+	flag = 1;
+	flag += ft_getflags(input);
+	num = ft_vartype(input);
+	numstr = ft_itoa_base_long(num, 2);
+	ft_checkflags(input, numstr);
+	input->form = input->form + flag;
+	return (0);
+}

@@ -75,7 +75,7 @@ int		ft_convers_x(t_input *input)
 
 	flag = 1;
 	flag += ft_getflags(input);
-	num = ft_vartype(input);
+	num = ft_vartype_u(input);
 	if (input->islong)
 		numstr = ft_itoa_base_unsign(num, 16);
 	else
