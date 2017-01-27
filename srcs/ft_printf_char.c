@@ -35,13 +35,10 @@ int		ft_convers_c(t_input *input)
 
 	flag = 1;
 	i = -1;
-	while (input->form[++i])
+	if (input->form[1] == 'l' && input->form[2] == 'c')
 	{
-		if (input->form[i] == 'l' && input->form[i + 1] == 'c')
-		{
-			ft_convers_wc(input);
-			return (0);
-		}
+		ft_convers_wc(input);
+		return (0);
 	}
 	c = ft_strnew(1);
 	flag += ft_getflags(input);
@@ -62,13 +59,10 @@ int		ft_convers_s(t_input *input)
 
 	flag = 1;
 	i = -1;
-	while (input->form[++i])
+	if (input->form[1] == 'l' && input->form[2] == 's')
 	{
-		if (input->form[i] == 'l' && input->form[i + 1] == 's')
-		{
-			ft_convers_ws(input);
-			return (0);
-		}
+		ft_convers_ws(input);
+		return (0);
 	}
 	flag += ft_getflags(input);
 	temp = (char *)input->var;
