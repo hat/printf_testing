@@ -21,7 +21,7 @@ int		ft_convers_n(t_input *input)
 	flags = 1;
 	holdmem = va_arg(input->ap, int *);
 	len = (int)ft_strlen(input->str);
-	holdmem = &len;
+	//*holdmem = len;
 	input->form = input->form + flags;
 	return (0);
 }
