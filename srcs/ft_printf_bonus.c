@@ -14,11 +14,15 @@
 
 int		ft_convers_n(t_input *input)
 {
+	int		flags;
+	int		len;
 	int		*holdmem;
 
+	flags = 1;
 	holdmem = va_arg(input->ap, int *);
-	*holdmem = (int)ft_strlen(input->str);
-	input->form = input->form + 1;
+	len = (int)ft_strlen(input->str);
+	holdmem = &len;
+	input->form = input->form + flags;
 	return (0);
 }
 
