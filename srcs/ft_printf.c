@@ -104,8 +104,7 @@ int		ft_printf(const char *format, ...)
 	va_start(input->ap, format);
 	ft_init(input);
 	va_end(input->ap);
-	if (input->str)
-		ft_putstr(input->str);
+	ft_putstr(input->str);
 	ret = ft_strlen(input->str) + input->size;
 	ft_strdel(&input->str);
 	ft_strdel(&input->flags);
