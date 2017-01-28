@@ -44,10 +44,7 @@ int		ft_convers_c(t_input *input)
 	flag += ft_getflags(input);
 	c[0] = (int)input->var;
 	if (c[0] == 0)
-	{
-		input->size++;
-		ft_putchar(0);
-	}
+		c[0] = 1;
 	ft_checkflags(input, c);
 	input->form += flag;
 	return (0);

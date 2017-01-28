@@ -45,19 +45,6 @@ t_input	*ft_init_tinput(const char *format)
 
 	new = (t_input *)ft_memalloc(sizeof(t_input));
 	new->form = ft_strdup((char *)format);
-	new->flags = NULL;
-	new->str = NULL;
-	new->size = 0;
-	new->negative = 0;
-	new->flagplus = 0;
-	new->flagpound = 0;
-	new->flagspace = 0;
-	new->flagminus = 0;
-	new->flagzero = 0;
 	new->precision = -1;
-	new->islong = 0;
-	new->flagl = 0;
-	new->flagh = 0;
-	new->flagz = 0;
 	return (new);
 }

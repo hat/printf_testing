@@ -51,7 +51,7 @@ int		ft_convers_wc(t_input *input)
 	c = (wint_t)input->var;
 	str = ft_wctos(c);
 	if (str[0] == 0)
-		input->size++;
+		str[0] = 1;
 	flag += ft_getflags(input);
 	ft_checkflags(input, str);
 	input->form += flag;

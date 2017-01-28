@@ -104,10 +104,14 @@ int		ft_printf(const char *format, ...)
 	va_start(input->ap, format);
 	ft_init(input);
 	va_end(input->ap);
-	if (input->str)
-		ft_putstr(input->str);
-	ret = ft_strlen(input->str) + input->size;
-	ft_strdel(&input->str);
+	ret = 0;
+	while (input->str[ret])
+	{
+		if (input->str[ret] == 1)
+			input->str[ret] = 0;
+		ret++;
+	}
+	write(1, input->str, ret);
 	ft_strdel(&input->flags);
 	free(input);
 	return (ret);

@@ -15,12 +15,12 @@
 int		ft_convers_n(t_input *input)
 {
 	int		flags;
-	int		len;
-	int		*holdmem;
+	int		*mem;
 
 	flags = 1;
-	holdmem = va_arg(input->ap, int *);
-	len = (int)ft_strlen(input->str);
+	mem = va_arg(input->ap, int *);
+	printf("Seg fault below....\n");
+	*mem = (int)ft_strlen(input->str);
 	//*holdmem = len;
 	input->form = input->form + flags;
 	return (0);
