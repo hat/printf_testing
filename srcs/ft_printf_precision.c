@@ -36,8 +36,7 @@ char	*ft_checkprecision(t_input *input, char *str)
 	char	*new;
 	char	*fill;
 
-	if (input->precision > (int)ft_strlen(str) && ft_tolower(input->c) != 's'
-		&& ft_tolower(input->c) != 'c')
+	if (input->precision > (int)ft_strlen(str) && ft_tolower(input->c) != 's')
 	{
 		fill = ft_strnew(input->precision - ft_strlen(str) - poset(input));
 		ft_memset(fill, '0', input->precision - ft_strlen(str) - poset(input));
