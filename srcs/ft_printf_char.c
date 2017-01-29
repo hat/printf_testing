@@ -83,10 +83,9 @@ int		ft_convers_p(t_input *input)
 	char	*numstr;
 
 	flag = 1;
+	flag += ft_getflags(input);
 	num = (long)input->var;
 	numstr = ft_itoa_base_long(num, 16);
-	flag += ft_getflags(input);
-	numstr = ft_strjoin("0x", numstr);
 	ft_checkflags(input, numstr);
 	input->form += flag;
 	ft_strdel(&numstr);

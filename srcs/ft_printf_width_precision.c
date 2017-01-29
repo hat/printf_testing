@@ -78,7 +78,7 @@ void	ft_getflagprecision(t_input *input)
 		if (ft_checkforwild(&input->flags[i], 0))
 		{
 			precision = (int)input->var;
-			if (precision > 0)
+			if (precision >= 0)
 				input->precision = precision;
 			input->var = va_arg(input->ap, void *);
 		}
@@ -103,6 +103,8 @@ int		ft_getflags(t_input *input)
 	if (ft_checkforwild(input->flags, 1))
 	{
 		input->width = ft_widthtopositive(input, (int)input->var);
+		if (ft_atoi_flags(input->flags + 1))
+			input->width = ft_atoi_flags(input->flags + 1);
 		input->var = va_arg(input->ap, void *);
 	}
 	else

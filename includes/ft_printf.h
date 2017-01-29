@@ -68,6 +68,7 @@ int				ft_convers_ws(t_input *input);
 */
 int				ft_convers_n(t_input *input);
 int				ft_convers_b(t_input *input);
+void			ft_convers_other(t_input *input);
 /*
 ** Declare flag operation functions
 */

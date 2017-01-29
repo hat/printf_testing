@@ -77,7 +77,7 @@ int				ft_isconversion(char c)
 			|| c == '%' || c == 'f' || c == 'o' || c == 'x'
 			|| c == 'u' || c == 'O' || c == 'X' || c == 'p'
 			|| c == 'U' || c == 'D' || c == 'C' || c == 'S'
-			|| c == 'n' || c == 'b')
+			|| c == 'n' || c == 'b' || c == 'Z' || c == 'R')
 	{
 		return (1);
 	}

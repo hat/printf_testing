@@ -19,9 +19,7 @@ int		ft_convers_n(t_input *input)
 
 	flags = 1;
 	mem = va_arg(input->ap, int *);
-	printf("Seg fault below....\n");
 	*mem = (int)ft_strlen(input->str);
-	//*holdmem = len;
 	input->form = input->form + flags;
 	return (0);
 }
@@ -39,4 +37,20 @@ int		ft_convers_b(t_input *input)
 	ft_checkflags(input, numstr);
 	input->form = input->form + flag;
 	return (0);
+}
+
+void	ft_convers_other(t_input *input)
+{
+	int		flag;
+	char	*str;
+
+	flag = 0;
+	flag += ft_getflags(input);
+	if (input->flagplus == 0 && input->flagpound == 0 && input->flagspace == 0 && input->flagminus == 0 && input->flagzero == 0)
+	{
+		flag -= 1;
+	}
+	str = ft_strdup(&input->c);
+	ft_checkflags(input, str);
+	input->form = input->form + flag;
 }

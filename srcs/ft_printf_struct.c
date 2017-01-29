@@ -23,6 +23,9 @@ void	ft_resetflags(t_input *input)
 	input->flagminus = 0;
 	input->flagzero = 0;
 	input->islong = 0;
+	input->flagl = 0;
+	input->flagh = 0;
+	input->flagz = 0;
 }
 
 int		ft_init(t_input *input)

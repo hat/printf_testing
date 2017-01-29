@@ -54,6 +54,8 @@ void	ft_callflags(t_input *input, char *str)
 		&& input->c != 'u' && input->c != '%' && input->flagplus != -1
 		&& ft_strcmp(str, "(null)") && ft_tolower(input->c) != 'c')
 		str = ft_flagspace(str);
+	if (input->c == 'p')
+		str = ft_strjoin("0x", str);
 	if (input->width && !input->flagminus)
 		str = ft_flagwidth(input, str, 0);
 	if (input->c == 'X')
@@ -71,7 +73,7 @@ void	ft_checkflags(t_input *t, char *str)
 	numcheck = 0;
 	if (str[0] == '-')
 		str = ft_deletenegative(t, str);
-	if (t->c != '%' && str[0] != 1)
+	if (t->c != '%')
 		str = ft_checkprecision(t, str);
 	while (t->flags[++i])
 	{
@@ -83,7 +85,7 @@ void	ft_checkflags(t_input *t, char *str)
 			t->flagpound++;
 		if (t->flags[i] == '-')
 			t->flagminus++;
-		if (t->flags[i] == ' ' && str[0] != '-')
+		if (t->flags[i] == ' ' && str[0] != '-' && t->c != 'Z')
 			t->flagspace++;
 		if (t->flags[i] == '0' && !numcheck)
 			t->flagzero++;

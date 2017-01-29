@@ -73,6 +73,10 @@ int		ft_widthoffset(t_input *input, char *str)
 		offset += 1;
 	if (input->flagspace && input->flagzero)
 		offset += 1;
+	if (input->c == 'p' && str[1] != 'x' && input->width > offset + 2)
+		offset += 2;
+	if (input->c == 'p' && str[1] != 'x' && input->width == offset + 1)
+		offset += 1;
 	return (offset);
 }
 

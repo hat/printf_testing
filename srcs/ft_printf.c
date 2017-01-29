@@ -18,6 +18,8 @@ void	ft_pickconverscontd(t_input *input)
 		ft_convers_n(input);
 	if (input->c == 'b')
 		ft_convers_b(input);
+	if (input->c == 'Z' || input->c == 'R')
+		ft_convers_other(input);
 }
 
 void	ft_pickconvers(t_input *input)
