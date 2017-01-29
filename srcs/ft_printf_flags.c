@@ -46,13 +46,16 @@ void	ft_callflags(t_input *input, char *str)
 	if (input->flagpound)
 		str = ft_flagpound(input, str);
 	if (input->flagplus && !input->negative && ft_tolower(input->c) != 'u'
-		&& ft_tolower(input->c) != 'o' && ft_strcmp(str, "(null)"))
+		&& ft_tolower(input->c) != 'o' && ft_strcmp(str, "(null)")
+		&& ft_tolower(input->c) != 'p' && ft_tolower(input->c) != 'x')
 		str = ft_flagplus(input, str);
 	if (input->negative)
 		str = ft_addnegative(input, str);
 	if (input->flagspace && !input->flagminus && !input->negative
 		&& input->c != 'u' && input->c != '%' && input->flagplus != -1
-		&& ft_strcmp(str, "(null)") && ft_tolower(input->c) != 'c')
+		&& ft_strcmp(str, "(null)") && ft_tolower(input->c) != 'c'
+		&& ft_tolower(input->c != 'p') && ft_tolower(input->c) != 'o'
+		&& ft_tolower(input->c) != 'x')
 		str = ft_flagspace(str);
 	if (input->c == 'p')
 		str = ft_strjoin("0x", str);
@@ -73,7 +76,7 @@ void	ft_checkflags(t_input *t, char *str)
 	numcheck = 0;
 	if (str[0] == '-')
 		str = ft_deletenegative(t, str);
-	if (t->c != '%' && ft_tolower(t->c) != 'c')// && str[0] != 1)
+	if (t->c != '%' && ft_tolower(t->c) != 'c')
 		str = ft_checkprecision(t, str);
 	while (t->flags[++i])
 	{

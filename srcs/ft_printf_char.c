@@ -68,6 +68,11 @@ int		ft_convers_s(t_input *input)
 	temp = (char *)input->var;
 	if (!temp)
 		str = ft_strdup("(null)");
+	else if (!temp && input->flagzero)
+	{
+		str = ft_strnew(1);
+		str[0] = 1;
+	}
 	else
 		str = ft_strdup(temp);
 	ft_checkflags(input, str);

@@ -46,7 +46,9 @@ void	ft_convers_other(t_input *input)
 
 	flag = 0;
 	flag += ft_getflags(input);
-	if (input->flagplus == 0 && input->flagpound == 0 && input->flagspace == 0 && input->flagminus == 0 && input->flagzero == 0)
+	if (input->flagplus == 0 && input->flagpound == 0
+		&& input->flagspace == 0 && input->flagminus == 0
+		&& input->flagzero == 0)
 	{
 		flag -= 1;
 	}

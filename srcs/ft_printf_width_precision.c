@@ -83,7 +83,13 @@ void	ft_getflagprecision(t_input *input)
 			input->var = va_arg(input->ap, void *);
 		}
 		else
-			input->precision = ft_atoi_flags(&input->flags[i + 1]);
+		{
+			if (!ft_isdigit(input->flags[i + 1]) && (input->c == 'c'
+				|| input->c == '%'))
+				input->precision = -1;
+			else
+				input->precision = ft_atoi_flags(&input->flags[i + 1]);
+		}
 	}
 }
 

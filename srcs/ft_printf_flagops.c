@@ -91,8 +91,10 @@ char	*ft_flagwidth(t_input *input, char *str, int left)
 	if (!input->flagminus && input->flagzero)
 		fill = '0';
 	if (input->precision != -1 && input->flagzero
-		&& input->precision < input->width)
+		&& input->precision < input->width && str)
 		fill = ' ';
+	if (input->flagzero && input->c == 's')
+		fill = '0';
 	offset = ft_widthoffset(input, str);
 	addon = ft_memalloc(input->width);
 	if (input->width - offset > 0)
