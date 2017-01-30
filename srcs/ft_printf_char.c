@@ -50,6 +50,21 @@ int		ft_convers_c(t_input *input)
 	return (0);
 }
 
+char	*ft_convers_s_null(t_input *input, char *str)
+{
+	char	*new;
+
+	if (!str && input->flagzero)
+	{
+		new = ft_strnew(1);
+		new[0] = 1;
+	}
+	else
+		new = ft_strdup("(null)");
+	ft_strdel(&str);
+	return (new);
+}
+
 int		ft_convers_s(t_input *input)
 {
 	int		flag;
@@ -67,12 +82,7 @@ int		ft_convers_s(t_input *input)
 	flag += ft_getflags(input);
 	temp = (char *)input->var;
 	if (!temp)
-		str = ft_strdup("(null)");
-	else if (!temp && input->flagzero)
-	{
-		str = ft_strnew(1);
-		str[0] = 1;
-	}
+		str = ft_convers_s_null(input, temp);
 	else
 		str = ft_strdup(temp);
 	ft_checkflags(input, str);

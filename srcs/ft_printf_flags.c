@@ -52,10 +52,9 @@ void	ft_callflags(t_input *input, char *str)
 	if (input->negative)
 		str = ft_addnegative(input, str);
 	if (input->flagspace && !input->flagminus && !input->negative
-		&& input->c != 'u' && input->c != '%' && input->flagplus != -1
-		&& ft_strcmp(str, "(null)") && ft_tolower(input->c) != 'c'
-		&& ft_tolower(input->c != 'p') && ft_tolower(input->c) != 'o'
-		&& ft_tolower(input->c) != 'x')
+		&& input->flagplus != -1 && (ft_tolower(input->c) == 'd'
+		|| ft_tolower(input->c) == 'i' || ft_tolower(input->c) == 's')
+		&& ft_strcmp(str, "(null)"))
 		str = ft_flagspace(str);
 	if (input->c == 'p')
 		str = ft_strjoin("0x", str);

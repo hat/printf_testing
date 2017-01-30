@@ -45,13 +45,9 @@ void	ft_convers_other(t_input *input)
 	char	*str;
 
 	flag = 0;
-	flag += ft_getflags(input);
-	if (input->flagplus == 0 && input->flagpound == 0
-		&& input->flagspace == 0 && input->flagminus == 0
-		&& input->flagzero == 0)
-	{
-		flag -= 1;
-	}
+	while (input->form[flag] != 'Z' && input->form[flag] != 'R')
+		flag++;
+	ft_getflags(input);
 	str = ft_strdup(&input->c);
 	ft_checkflags(input, str);
 	input->form = input->form + flag;

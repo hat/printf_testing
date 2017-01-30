@@ -85,7 +85,7 @@ void	ft_getflagprecision(t_input *input)
 		else
 		{
 			if (!ft_isdigit(input->flags[i + 1]) && (input->c == 'c'
-				|| input->c == '%'))
+				|| input->c == '%' || input->c == 'Z'))
 				input->precision = -1;
 			else
 				input->precision = ft_atoi_flags(&input->flags[i + 1]);

@@ -42,7 +42,7 @@ static char	*ft_convert(long value, ssize_t size, size_t temp, int base)
 	return (numstr);
 }
 
-char	*ft_itoa_base_long(long value, int base)
+char		*ft_itoa_base_long(long value, int base)
 {
 	ssize_t	size;
 	size_t	temp;

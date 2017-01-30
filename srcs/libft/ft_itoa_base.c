@@ -37,7 +37,7 @@ static char	*ft_convert(long num, long temp, long len, int base)
 	return (numstr);
 }
 
-char	*ft_itoa_base(int value, int base)
+char		*ft_itoa_base(int value, int base)
 {
 	long	n;
 	long	temp;
