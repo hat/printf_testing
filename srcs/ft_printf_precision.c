@@ -45,7 +45,7 @@ char	*ft_checkprecision(t_input *input, char *str)
 	}
 	else
 	{
-		if (input->precision != -1 && input->c == 's')
+		if (input->precision != -1 && ft_tolower(input->c) == 's')
 			new = ft_strndup(str, input->precision);
 		else if (input->precision == 0 && input->c != '%' && ft_atoi(str) == 0)
 		{

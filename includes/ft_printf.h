@@ -39,6 +39,7 @@ typedef struct	s_read
 	int			flagl;
 	int			flagh;
 	int			flagz;
+	long		widelen;
 }				t_input;
 
 /*

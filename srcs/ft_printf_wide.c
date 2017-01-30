@@ -68,6 +68,7 @@ int		ft_convers_ws(t_input *input)
 
 	flag = 1;
 	i = -1;
+	flag += ft_getflags(input);
 	str = ft_strnew(1);
 	instr = (wchar_t *)input->var;
 	if (!instr)
@@ -80,7 +81,6 @@ int		ft_convers_ws(t_input *input)
 			str = ft_strjoin(str, ft_wctos(c));
 		}
 	}
-	flag += ft_getflags(input);
 	ft_checkflags(input, str);
 	input->form += flag;
 	ft_strdel(&str);
