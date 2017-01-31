@@ -12,7 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_convers_n(t_input *input)
+/*
+** ft_convers_n returns the current length to a pointer passed in va_arg
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_n(t_input *input)
 {
 	int		flags;
 	int		*mem;
@@ -21,10 +27,15 @@ int		ft_convers_n(t_input *input)
 	mem = va_arg(input->ap, int *);
 	*mem = (int)ft_strlen(input->str);
 	input->form = input->form + flags;
-	return (0);
 }
 
-int		ft_convers_b(t_input *input)
+/*
+** ft_convers_b changes the conversion to binary
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_b(t_input *input)
 {
 	int		flag;
 	long	num;
@@ -36,8 +47,13 @@ int		ft_convers_b(t_input *input)
 	numstr = ft_itoa_base_long(num, 2);
 	ft_checkflags(input, numstr);
 	input->form = input->form + flag;
-	return (0);
 }
+
+/*
+** ft_convers_other deals with the non valid conversions
+**
+** @param t_input stores everything needed for the return string
+*/
 
 void	ft_convers_other(t_input *input)
 {

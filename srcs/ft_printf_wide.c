@@ -12,6 +12,14 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_wctos converts a wint_t to a string
+**
+** @param wint_t wide character
+**
+** @return string containing the wide character
+*/
+
 char	*ft_wctos(wint_t c)
 {
 	char	*str;
@@ -40,7 +48,13 @@ char	*ft_wctos(wint_t c)
 	return (str);
 }
 
-int		ft_convers_wc(t_input *input)
+/*
+** ft_convers_wc conversion to wide character
+**
+** @param t_input struct containing all the string variables
+*/
+
+void	ft_convers_wc(t_input *input)
 {
 	int		flag;
 	char	*str;
@@ -55,10 +69,15 @@ int		ft_convers_wc(t_input *input)
 	flag += ft_getflags(input);
 	ft_checkflags(input, str);
 	input->form += flag;
-	return (0);
 }
 
-int		ft_convers_ws(t_input *input)
+/*
+** ft_convers_ws conversion to wide string
+**
+** @param t_input struct containing all the string variables
+*/
+
+void	ft_convers_ws(t_input *input)
 {
 	int		flag;
 	char	*str;
@@ -84,5 +103,4 @@ int		ft_convers_ws(t_input *input)
 	ft_checkflags(input, str);
 	input->form += flag;
 	ft_strdel(&str);
-	return (0);
 }

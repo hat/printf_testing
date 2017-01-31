@@ -12,6 +12,15 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_vartype changes the null to pointer from va_args to a variable type
+**            depending on the flags for signed numbers
+**
+** @param input the struct holding all the output variables
+**
+** @return the number from va_args
+*/
+
 long			ft_vartype(t_input *input)
 {
 	long	num;
@@ -29,6 +38,15 @@ long			ft_vartype(t_input *input)
 		num = (int)input->var;
 	return (num);
 }
+
+/*
+** ft_vartype_u changes the null to pointer from va_args to a variable type
+**            depending on the flags for unsigned numbers
+**
+** @param input the struct holding all the output variables
+**
+** @return the number from va_args
+*/
 
 unsigned long	ft_vartype_u(t_input *input)
 {
@@ -48,6 +66,14 @@ unsigned long	ft_vartype_u(t_input *input)
 	return (num);
 }
 
+/*
+** ft_getconversion returns the conversion in the string
+**
+** @param str current str passed in
+**
+** @return the character of the conversion
+*/
+
 char			ft_getconversion(char *str)
 {
 	int		i;
@@ -62,6 +88,14 @@ char			ft_getconversion(char *str)
 	return (' ');
 }
 
+/*
+** ft_isflag checks to see if the character is a flag
+**
+** @param c the character to check
+**
+** @return bool whether or not it is a flag
+*/
+
 int				ft_isflag(char c)
 {
 	if (c == '#' || c == '-' || c == '0')
@@ -70,6 +104,14 @@ int				ft_isflag(char c)
 	}
 	return (0);
 }
+
+/*
+** ft_isconversion checks to see if the character is a conversion
+**
+** @param c the character to check
+**
+** @return bool whether or not the char is a conversion
+*/
 
 int				ft_isconversion(char c)
 {

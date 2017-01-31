@@ -12,7 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_convers_id(t_input *input)
+/*
+** ft_convers_id changes the conversion to an integer or double
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_id(t_input *input)
 {
 	int		flag;
 	long	num;
@@ -24,10 +30,15 @@ int		ft_convers_id(t_input *input)
 	numstr = ft_itoa_base_long(num, 10);
 	ft_checkflags(input, numstr);
 	input->form = input->form + flag;
-	return (0);
 }
 
-int		ft_convers_u(t_input *input)
+/*
+** ft_convers_u changes the conversion to an unsigned integer or long
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_u(t_input *input)
 {
 	int				flag;
 	unsigned long	num;
@@ -40,16 +51,26 @@ int		ft_convers_u(t_input *input)
 	ft_checkflags(input, numstr);
 	input->form = input->form + flag;
 	ft_strdel(&numstr);
-	return (0);
 }
 
-int		ft_convers_f(t_input *input)
+/*
+** ft_convers_f changes the conversion to a float - NOT WORKING
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_f(t_input *input)
 {
 	input = NULL;
-	return (0);
 }
 
-int		ft_convers_o(t_input *input)
+/*
+** ft_convers_o changes the conversion to an octal value
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_o(t_input *input)
 {
 	int		i;
 	int		flag;
@@ -64,10 +85,15 @@ int		ft_convers_o(t_input *input)
 	ft_checkflags(input, numstr);
 	input->form += flag;
 	ft_strdel(&numstr);
-	return (0);
 }
 
-int		ft_convers_x(t_input *input)
+/*
+** ft_convers_x changes the conversion to a hexedecimal value
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_x(t_input *input)
 {
 	int		flag;
 	long	num;
@@ -83,5 +109,4 @@ int		ft_convers_x(t_input *input)
 	ft_checkflags(input, numstr);
 	input->form += flag;
 	ft_strdel(&numstr);
-	return (0);
 }

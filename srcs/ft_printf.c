@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_pickconverscontd picks the conversion function to call
+**
+** @param t_input stores everything needed for the return string
+*/
+
 void	ft_pickconverscontd(t_input *input)
 {
 	if (input->c == 'n')
@@ -21,6 +27,12 @@ void	ft_pickconverscontd(t_input *input)
 	if (input->c == 'Z' || input->c == 'R')
 		ft_convers_other(input);
 }
+
+/*
+** ft_pickconverscontd picks the conversion function to call
+**
+** @param t_input stores everything needed for the return string
+*/
 
 void	ft_pickconvers(t_input *input)
 {
@@ -51,30 +63,39 @@ void	ft_pickconvers(t_input *input)
 	ft_pickconverscontd(input);
 }
 
-int		ft_findconvers(t_input *input)
+/*
+** ft_pickconvers finds the conversion and sets the struct variable
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_findconvers(t_input *input)
 {
 	int		i;
-	int		foundconvers;
 	char	c;
 
 	i = -1;
-	foundconvers = 0;
-	while (input->form[++i] && !foundconvers)
+	while (input->form[++i])
 	{
 		c = input->form[i + 1];
 		if (ft_isconversion(c))
 		{
 			input->c = c;
 			ft_pickconvers(input);
-			foundconvers++;
+			break ;
 		}
 	}
 	input->form = input->form + 1;
 	ft_init(input);
-	return (0);
 }
 
-int		ft_percentsign(t_input *input)
+/*
+** ft_percentsign checks to see if a percent sign exists in form
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_percentsign(t_input *input)
 {
 	char	*prev;
 	char	*temp;
@@ -94,8 +115,15 @@ int		ft_percentsign(t_input *input)
 	}
 	ft_strdel(&prev);
 	ft_findconvers(input);
-	return (0);
 }
+
+/*
+** ft_printf function to a string that could have variables present
+**
+** @param format pointer to the string to print
+**
+** @return length of the string that is printed
+*/
 
 int		ft_printf(const char *format, ...)
 {

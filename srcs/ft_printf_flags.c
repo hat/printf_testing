@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_gettypeflags checks what value modifiers are in the string
+**
+** @param input the struct holding all the output variables
+*/
+
 void	ft_gettypeflags(t_input *input)
 {
 	int i;
@@ -36,6 +42,13 @@ void	ft_gettypeflags(t_input *input)
 	if (input->flagl || input->flagh || input->flagz)
 		input->islong = 1;
 }
+
+/*
+** ft_callflags calls certain flag functions if cases hold true
+**
+** @param input the struct holding all the output variables
+** @param str the current string
+*/
 
 void	ft_callflags(t_input *input, char *str)
 {
@@ -65,6 +78,13 @@ void	ft_callflags(t_input *input, char *str)
 	if (str)
 		input->str = ft_strjoin(input->str, str);
 }
+
+/*
+** ft_checkflags sees how many of each flags occur if compatible
+**
+** @param input the struct holding all the output variables
+** @param str the current string
+*/
 
 void	ft_checkflags(t_input *t, char *str)
 {

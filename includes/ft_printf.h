@@ -45,11 +45,11 @@ typedef struct	s_read
 /*
 ** Declare digit conversion functions
 */
-int				ft_convers_id(t_input *input);
-int				ft_convers_u(t_input *input);
-int				ft_convers_f(t_input *input);
-int				ft_convers_o(t_input *input);
-int				ft_convers_x(t_input *input);
+void			ft_convers_id(t_input *input);
+void			ft_convers_u(t_input *input);
+void			ft_convers_f(t_input *input);
+void			ft_convers_o(t_input *input);
+void			ft_convers_x(t_input *input);
 /*
 ** Declare digit negative functions
 */
@@ -58,17 +58,17 @@ char			*ft_addnegative(t_input *input, char *str);
 /*
 ** Declare char conversion functions
 */
-int				ft_convers_percent(t_input *input);
+void			ft_convers_percent(t_input *input);
 int				ft_convers_c(t_input *input);
 int				ft_convers_s(t_input *input);
-int				ft_convers_p(t_input *input);
-int				ft_convers_wc(t_input *input);
-int				ft_convers_ws(t_input *input);
+void			ft_convers_p(t_input *input);
+void			ft_convers_wc(t_input *input);
+void			ft_convers_ws(t_input *input);
 /*
 ** Declare bonus conversion functions
 */
-int				ft_convers_n(t_input *input);
-int				ft_convers_b(t_input *input);
+void			ft_convers_n(t_input *input);
+void			ft_convers_b(t_input *input);
 void			ft_convers_other(t_input *input);
 /*
 ** Declare flag operation functions
@@ -105,6 +105,6 @@ void			ft_resetflags(t_input *input);
 /*
 ** Declare main program function
 */
-int				ft_percentsign(t_input *input);
+void			ft_percentsign(t_input *input);
 
 #endif

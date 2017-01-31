@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_atoi_flags get the digits in a string
+**
+** @returns the digit in the string
+*/
+
 int		ft_atoi_flags(const char *str)
 {
 	int		ans;
@@ -37,6 +43,12 @@ int		ft_atoi_flags(const char *str)
 	return (ans * neg);
 }
 
+/*
+** ft_widthtopositive converts the number to a positive and sets minus flag
+**
+** @returns the positive number
+*/
+
 int		ft_widthtopositive(t_input *input, int num)
 {
 	if (num < 0)
@@ -46,6 +58,12 @@ int		ft_widthtopositive(t_input *input, int num)
 	}
 	return (num);
 }
+
+/*
+** ft_checkforwild checks if asterisk is present
+**
+** @returns boolean if *
+*/
 
 int		ft_checkforwild(char *str, int iswidth)
 {
@@ -64,6 +82,12 @@ int		ft_checkforwild(char *str, int iswidth)
 	}
 	return (wildflag);
 }
+
+/*
+** ft_getflagprecision gets the precision of the conversion
+**
+** @param t_input struct holding all the information
+*/
 
 void	ft_getflagprecision(t_input *input)
 {
@@ -92,6 +116,14 @@ void	ft_getflagprecision(t_input *input)
 		}
 	}
 }
+
+/*
+** ft_getflags gets the width and precision of the conversion
+**
+** @param t_input struct holding all the information
+**
+** @return the number of flags present
+*/
 
 int		ft_getflags(t_input *input)
 {

@@ -12,7 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_convers_percent(t_input *input)
+/*
+** ft_convers_percent changes the conversion to a single percent
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_percent(t_input *input)
 {
 	int		flag;
 	char	*str;
@@ -24,8 +30,14 @@ int		ft_convers_percent(t_input *input)
 	ft_checkflags(input, str);
 	input->form = input->form + flag;
 	ft_strdel(&str);
-	return (0);
 }
+
+/*
+** ft_convers_c changes the conversion to a character
+**
+** @param t_input stores everything needed for the return string
+** @return 0 upon completion
+*/
 
 int		ft_convers_c(t_input *input)
 {
@@ -50,6 +62,15 @@ int		ft_convers_c(t_input *input)
 	return (0);
 }
 
+/*
+** ft_convers_s_null deals with a null string
+**
+** @param t_input stores everything needed for the return string
+** @param str the variable that was recieved from va_args
+**
+** @return null string if flag zero otherwise string "(null)"
+*/
+
 char	*ft_convers_s_null(t_input *input, char *str)
 {
 	char	*new;
@@ -64,6 +85,13 @@ char	*ft_convers_s_null(t_input *input, char *str)
 	ft_strdel(&str);
 	return (new);
 }
+
+/*
+** ft_convers_s changes the conversion to a string
+**
+** @param t_input stores everything needed for the return string
+** @return 0 upon completion
+*/
 
 int		ft_convers_s(t_input *input)
 {
@@ -91,7 +119,13 @@ int		ft_convers_s(t_input *input)
 	return (0);
 }
 
-int		ft_convers_p(t_input *input)
+/*
+** ft_convers_b changes the conversion to the memory address
+**
+** @param t_input stores everything needed for the return string
+*/
+
+void	ft_convers_p(t_input *input)
 {
 	int		flag;
 	long	num;
@@ -104,5 +138,4 @@ int		ft_convers_p(t_input *input)
 	ft_checkflags(input, numstr);
 	input->form += flag;
 	ft_strdel(&numstr);
-	return (0);
 }

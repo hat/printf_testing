@@ -12,6 +12,15 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_poset checks the offset for the precision by figuring out
+**          what will be added to the string in the future
+**
+** @param input the struct holding all the output variables
+**
+** @return the number of chars that will be added
+*/
+
 int		poset(t_input *input)
 {
 	int		i;
@@ -30,6 +39,15 @@ int		poset(t_input *input)
 	}
 	return (offset);
 }
+
+/*
+** ft_checkprecision uses the precision to update the string
+**
+** @param input the struct holding all the output variables
+** @str the current string
+**
+** @return the new string
+*/
 
 char	*ft_checkprecision(t_input *input, char *str)
 {

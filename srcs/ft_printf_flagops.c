@@ -12,6 +12,14 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_flagspace adds a single space
+**
+** @param str the current string
+**
+** @return the new string
+*/
+
 char	*ft_flagspace(char *str)
 {
 	char	*new;
@@ -23,6 +31,15 @@ char	*ft_flagspace(char *str)
 	ft_strdel(&str);
 	return (new);
 }
+
+/*
+** ft_flagpound adds 0x to hex or 0 to octal
+**
+** @param input the struct holding all the output variables
+** @param str the current string
+**
+** @return the new string
+*/
 
 char	*ft_flagpound(t_input *input, char *str)
 {
@@ -46,6 +63,15 @@ char	*ft_flagpound(t_input *input, char *str)
 	return (new);
 }
 
+/*
+** ft_flagplus adds the plus sign
+**
+** @param input the struct holding all the output variables
+** @param str the current string
+**
+** @return the new string
+*/
+
 char	*ft_flagplus(t_input *input, char *str)
 {
 	char	*new;
@@ -55,6 +81,16 @@ char	*ft_flagplus(t_input *input, char *str)
 	ft_strdel(&str);
 	return (new);
 }
+
+/*
+** ft_widthoffset calculates what will be added to the string
+**                in order to accurately caluclate the width
+**
+** @param input the struct holding all the output variables
+** @param str the current string
+**
+** @return the value of chars yet to be added to the string
+*/
 
 int		ft_widthoffset(t_input *input, char *str)
 {
@@ -79,6 +115,16 @@ int		ft_widthoffset(t_input *input, char *str)
 		offset += 1;
 	return (offset);
 }
+
+/*
+** ft_flagwidth adds either 0(s) or Spaces(s) to the string
+**
+** @param input the struct holding all the output variables
+** @param str the current string
+** @param left bool to add the width before or after the string
+**
+** @return the new string
+*/
 
 char	*ft_flagwidth(t_input *input, char *str, int left)
 {

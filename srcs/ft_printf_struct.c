@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+/*
+** ft_resetflags resets all the flags of the struct
+**
+** @param input the struct holding all the output variables
+*/
+
 void	ft_resetflags(t_input *input)
 {
 	input->width = 0;
@@ -28,6 +34,12 @@ void	ft_resetflags(t_input *input)
 	input->flagz = 0;
 }
 
+/*
+** ft_init initializes the string depending on whether a percent sign was found
+**
+** @param input the struct holding all the output variables
+*/
+
 int		ft_init(t_input *input)
 {
 	if (!(ft_strchr(input->form, '%')))
@@ -41,6 +53,14 @@ int		ft_init(t_input *input)
 		ft_percentsign(input);
 	return (0);
 }
+
+/*
+** ft_init_tinput initializes the struct
+**
+** @param format the string passed in
+**
+** @return the newly initialized struct
+*/
 
 t_input	*ft_init_tinput(const char *format)
 {
