@@ -24,7 +24,7 @@ void	ft_pickconverscontd(t_input *input)
 
 void	ft_pickconvers(t_input *input)
 {
-	if (input->c != '%' && input->c != '\n')
+	if (input->c != '%' && input->c != 'n' && input->c != '\n')
 		input->var = va_arg(input->ap, void *);
 	if (input->c == 'i' || input->c == 'd' || input->c == 'D')
 		ft_convers_id(input);
