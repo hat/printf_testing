@@ -143,6 +143,7 @@ int		ft_printf(const char *format, ...)
 	}
 	write(1, input->str, ret);
 	ft_strdel(&input->flags);
+	ft_strdel(&input->str);
 	free(input);
 	return (ret);
 }

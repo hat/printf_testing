@@ -47,6 +47,7 @@ void	ft_convers_b(t_input *input)
 	numstr = ft_itoa_base_long(num, 2);
 	ft_checkflags(input, numstr);
 	input->form = input->form + flag;
+	ft_strdel(&numstr);
 }
 
 /*
@@ -67,4 +68,5 @@ void	ft_convers_other(t_input *input)
 	str = ft_strdup(&input->c);
 	ft_checkflags(input, str);
 	input->form = input->form + flag;
+	ft_strdel(&str);
 }
